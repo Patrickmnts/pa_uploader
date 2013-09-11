@@ -27,11 +27,9 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @upload }
+        format.html { redirect_to confirmation_path, notice: 'Upload was successfully created.' }
       else
         format.html { render action: 'new' }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,22 +39,10 @@ class UploadsController < ApplicationController
   def update
     respond_to do |format|
       if @upload.update(upload_params)
-        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to confirmation_path, notice: 'Upload was successfully updated.' }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /uploads/1
-  # DELETE /uploads/1.json
-  def destroy
-    @upload.destroy
-    respond_to do |format|
-      format.html { redirect_to uploads_url }
-      format.json { head :no_content }
     end
   end
 
