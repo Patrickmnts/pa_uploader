@@ -15,6 +15,9 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   def new
     @upload = Upload.new
+
+    # @upload.store!(my_file)
+    # @upload.retrieve_from_store!('my_file.png')
   end
 
   # POST /uploads
@@ -65,6 +68,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:file_name, :recipient_name)
+      params.require(:upload).permit(:file_name, :recipient_name, :package)
     end
 end
