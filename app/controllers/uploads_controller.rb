@@ -27,7 +27,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to confirmation_path, notice: 'Upload was successfully created.' }
+        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
       else
         format.html { render action: 'new' }
       end
@@ -39,11 +39,14 @@ class UploadsController < ApplicationController
   def update
     respond_to do |format|
       if @upload.update(upload_params)
-        format.html { redirect_to confirmation_path, notice: 'Upload was successfully updated.' }
+        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end
     end
+  end
+
+  def confirmation
   end
 
   private
@@ -54,6 +57,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:file_name, :recipient_name, :package)
+      params.require(:upload).permit(:user_name, :user_email, :recipient_email, :message, :package)
     end
 end
