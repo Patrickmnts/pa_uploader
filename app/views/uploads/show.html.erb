@@ -1,14 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>File name:</strong>
-  <%= @upload.file_name %>
+  <strong>From:</strong>
+  <%= @upload.user_name %>
+  < <%= @upload.user_email %> >
+</p>
+<p>
+  <strong>To:</strong>
+  <%= @upload.recipient_email %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%= @upload.message %>
+</p>
+<p>
+  <strong>File:</strong>
+  <%= link_to @upload.package, @upload.package.url %>
 </p>
 
-<p>
-  <strong>Recipient name:</strong>
-  <%= @upload.recipient_name %>
-</p>
 
 <%= link_to 'Edit', edit_upload_path(@upload) %> |
 <%= link_to 'Back', uploads_path %>
