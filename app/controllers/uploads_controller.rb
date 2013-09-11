@@ -15,9 +15,6 @@ class UploadsController < ApplicationController
   # GET /uploads/new
   def new
     @upload = Upload.new
-
-    # @upload.store!(my_file)
-    # @upload.retrieve_from_store!('my_file.png')
   end
 
   # POST /uploads
@@ -28,6 +25,9 @@ class UploadsController < ApplicationController
     respond_to do |format|
       if @upload.save
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
+
+        # Tell the UserMailer to send a welcome Email after save
+        UserMailer.send_confirmation_email(@upload).deliver
       else
         format.html { render action: 'new' }
       end
