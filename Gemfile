@@ -9,15 +9,15 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
-group :assets do
-  gem 'carrierwave'
-  gem 'jquery-fileupload-rails'
-  gem 'simple_form'
-end
+gem 'carrierwave'
+gem 'jquery-fileupload-rails'
+gem 'simple_form'
 
 
 group :development, :test do
- gem 'rspec-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'rspec-rails'
 end
 
 group :production do
