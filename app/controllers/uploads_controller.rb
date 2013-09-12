@@ -27,7 +27,7 @@ class UploadsController < ApplicationController
         format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
 
         # Tell the UserMailer to send a welcome Email after save
-        UserMailer.send_confirmation_email(@upload).deliver
+        UploadMailer.send_confirmation_email(@upload).deliver
       else
         format.html { render action: 'new' }
       end
