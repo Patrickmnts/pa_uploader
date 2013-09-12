@@ -2,14 +2,16 @@ class UploadMailer < ActionMailer::Base
   default from: "patrick@example.com"
 
   def send_confirmation_email(upload)
-    @user = upload.recipient_email
-    @url  = upload.package
-    mail(to: @user, subject: 'Wicked Cool Attachement')
+    @from = upload.user_email
+    @to = upload.recipient_email
+    @url  = root_url + upload.package
+    mail(to: @to, subject: "#{@from} has sent you a wicked cool attachement")
   end
 
-  # def read_confirmation_email(user)
-  #   @user = upload.user_email
-  #   @url  = 'http://example.com/login'
-  #   mail(to: @user.email, subject: 'Welcome to My Awesome Site')
-  # end
+  def read_confirmation_email(upload)
+    @attachemnt_name = upload.package
+    @from = upload.user_email
+    @to = upload.recipient_email
+    mail(to: @from, subject: "#{@to} has viewed your attachment.")
+  end
 end
