@@ -24,7 +24,7 @@ class UploadsController < ApplicationController
 
     respond_to do |format|
       if @upload.save
-        format.html { redirect_to @upload, notice: 'Upload was successfully created.' }
+        format.html { redirect_to new_upload_path, notice: 'Upload was successfully created.' }
 
         # Tell the UserMailer to send a welcome Email after save
         UploadMailer.send_confirmation_email(@upload).deliver
@@ -39,7 +39,7 @@ class UploadsController < ApplicationController
   def update
     respond_to do |format|
       if @upload.update(upload_params)
-        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
+        format.html { redirect_to new_upload_path, notice: 'Upload was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end

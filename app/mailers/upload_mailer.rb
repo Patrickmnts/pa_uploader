@@ -4,7 +4,7 @@ class UploadMailer < ActionMailer::Base
   def send_confirmation_email(upload)
     @from = upload.user_email
     @to = upload.recipient_email
-    @url  = root_url + upload.package
+    @url  = root_url + upload.package.to_s
     mail(to: @to, subject: "#{@from} has sent you a wicked cool attachement")
   end
 
