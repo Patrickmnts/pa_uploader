@@ -1,4 +1,11 @@
 Uploader::Application.configure do
+  # Make sure you change host to your production url and keep it localhost for development.
+  # This is for the mailer, it needs a default email to send out notices such as confirmations etc...
+
+  # FOR PRODUCTION
+   # config.action_mailer.default_url_options = { :host => 'PRODUCTION_URL' }
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

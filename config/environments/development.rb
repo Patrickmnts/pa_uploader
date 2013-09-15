@@ -1,4 +1,8 @@
 Uploader::Application.configure do
+
+  # To ensure actionmailer deploys on completion of upload.
+  config.action_mailer.default_url_options = { :host => 'localhost' }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
